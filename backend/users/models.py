@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager,PermissionsMixin
 from django.db import models
 
 class CustomUserManager(BaseUserManager):       #일반 사용자 생성 메서드
@@ -11,8 +11,41 @@ class CustomUserManager(BaseUserManager):       #일반 사용자 생성 메서�
         user.save(using=self._db)       #사용자 DB에 저장
         return user
     
-    def create_superuser(self, user_id, nickname, email, password=None):
-        extra_fields.setdefault('is_staff', True)
+    def create_superuser(self, user_id, nickname, email, password=None,**extra_fields):
+        extra_fields.setdefault('is_staff', True)       #관리자 권한 부여
         extra_fields.setdefault('is_superuser', True)
         
-        return self.create_user(user_id, nickname, )
+        return self.create_user(user_id, nickname, email, password,**extra_fields)
+    
+class CustomUser(AbstractBaseUser, PermissionsMixin):
+    user_id = models.CharField(primary_key=True, max_length=20)
+    nickname = models.CharField(max_length=50)
+    email = models.EmailField(unique=True)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    
+    groups = models.ManyToManyField(
+        'auth.Group',
+        verbose_name='groups',
+        blank=True,
+        related_name="customuser_set",
+        related_query_name="customuser",
+    )
+
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        related_name="customuser_set",
+        related_query_name="customuser",
+    )
+    
+    objects = CustomUserManager()
+    
+    USERNAME_FIELD = 'user_id'
+    REQUIRED_FIELDS = ['nickname', 'email']
+
+    def __str__(self):
+        return self.user_id
+
+
