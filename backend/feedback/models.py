@@ -1,10 +1,22 @@
+import os
+from uuid import uuid4
+from django.utils import timezone
 from django.db import models
 from users.models import CustomUser
+
+
+
+# 파일명 동적으로 생성
+def name_path(instance, filename):
+    upload_to = 'uploaded_videos/'
+    ext = filename.split('.')[-1]
+    filename = '{}.{}'.format(uuid4().hex, ext)
+    return os.path.join(upload_to, filename)
 
 # 사용자와 업로드한 비디오 연결
 class UserUpload(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # key 필드 customuser 모델로 변경
-    video = models.FileField(upload_to='uploaded_videos/')
+    video = models.FileField(upload_to=name_path)     # FileField 하면 모델에 저장ㄴㄴ 경로만 저장
     
     
     def __str__(self):
