@@ -9,7 +9,7 @@
     font-family:'Poppins',sans-serif;
 }
 body{
-    background: #FAF8F1;
+    background: #fAf8f1;
 }
 nav{
     position:fixed;;
@@ -62,13 +62,93 @@ nav:hover{
     width:280px;
     transition: all 0.5s ease;
 }
-
-.wrapper{
-    width: 700px;
-    padding: 2rem 1rem;
-    margin: 50px auto;
-    background-color: #fff;
-    border-radius: 10px;
-    text-align:center;
-    box-shadow: 0 20px 35px rgb(250, 237, 218);
+.logout{
+    position: absolute;
+    bottom: 0;
 }
+
+h1{
+    margin-left:120px;
+    margin-top: 25px;
+    color:#F8C36F;
+    float:left;
+
+}
+.container_file {
+    display: flex;
+    width: 100%;
+    margin: 20px 0;
+  }
+.button_text {
+    border:rgb(259, 179, 119);
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 27%;
+    margin-left:120px;
+    margin-top:30px;
+    height:35px;
+
+
+  }
+  .form__file-btn {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    line-height: 14px;
+    padding: 11px;
+    border-radius: 8px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    background-image:linear-gradient(45deg, #FFa973,#F8C56C);
+    box-shadow: 0 20px 35px rgb(250, 237, 218);
+    border: none;
+    display: inline-flex;
+    height:35px;
+    margin-top:30px;
+
+
+  }
+  .video_container{
+    margin-left:120px;
+    float: left;
+  }
+  .upload_file {
+    padding: 10%;
+  }
+  .form__file {
+    display: none;
+  }
+  .button_nave{
+    padding-bottom:150px;
+  }
+      .button_nav:hover, .form__file-btn:hover {
+      background: rgb(250, 179, 119);
+    }
+
+      .button_nav:active, .form__file-btn:active {
+      background: rgb(250, 179, 119);
+    }
+    #Visualize_archive{
+      margin-left:120px;
+    }
+
+    .btn{
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 40px;
+      color: #fff;
+      background-image:linear-gradient(45deg, #FFa973,#F8C56C);
+      font-size: 14px;
+      border-radius: 30px;
+      transition:0.5s;
+      animation-delay:1s;
+    }
+    .btn:hover{
+      border-top-right-radius:30px;
+
+  }

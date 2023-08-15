@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="styles/feedback.css"/>
     <!--Font Awesome Cdn Link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    <script src="echarts.js"></script>
+
 </head>
 <body>
     <nav>
@@ -15,30 +18,18 @@
                     <img src="images/index/AttentionPleaseLogo.png" alt="">
                 </a>
             </li>
-            <li><a href="home.html">
-                <i class="fas fa-home"></i>
-                <span class="nav-item">Home</span>
-            </a></li>
             <li><a href="dashboard.html">
                 <i class="fas fa-table-columns"></i>
                 <span class="nav-item">Dashboard</span>
             </a></li>
-            </a></li>
+
             <li><a href="feedback.html">
                 <i class="fas fa-chart-bar"></i>
                 <span class="nav-item">Feedback</span>
             </a></li>
-            <li><a href="#">
-                <i class="fas fa-book-open"></i>
-                <span class="nav-item">Scripts</span>
-            </a></li>
             <li><a href="setting.html">
                 <i class="fas fa-cog"></i>
                 <span class="nav-item">Setting</span>
-            </a></li>
-            <li><a href="#">
-                <i class="fas fa-question-circle"></i>
-                <span class="nav-item">Help</span>
             </a></li>
             <li><a href="index.html" class="logout">
                 <i class="fas fa-sign-out-alt"></i>
@@ -47,32 +38,12 @@
         </ul>
     </nav>
 
-    <main>
-        <h1 id="form_title">Get Your Feedback</h1>
-        <div class="container_file">
 
-            <!-- FINISH: input to copy the file name and look pretty on screen -->
-            <input type="text" id="nombre_Archivo" placeholder="Find File" class="button_text" readonly> &nbsp; &nbsp;
+    <div id="radarchart" style="width: 700px;height:500px; margin-right:120px; margin-top: 3px;"></div>
 
-            <!--FINISH: label to customize the input type file-->
-            <label for="upload_file" class="form__file-btn"> &#128193; &nbsp; Submit &nbsp; </label>
+    <script type="text/javascript" src="scripts/radar.js" >
 
-            <!--FINISH: to upload file-->
-            <input type="file" id="upload_file" class="form__file" accept="video/*" onchange="return crear_Archivo()">
-        </div>
+    </script>
 
-        <!--FINISH:To display file on screen-->
-        <div id="visualizar_Archivo" class="container_file"></div>
-
-        <!--FINISH: buttons to manage video -->
-        <button class="button_nav" onclick="play()">&#9205; &nbsp; Play</button>;
-        <button class="button_nav" onclick="pause()"> &#x23f8; &nbsp; Pause</button>;
-        <button class="button_nav" onclick="increaseVolume()">&#128266; &nbsp; Turn up</button>;
-        <button class="button_nav" onclick="decreaseVolume()">&#128265; &nbsp; Turn down</button>
-
-
-    </main>
-
-    <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
