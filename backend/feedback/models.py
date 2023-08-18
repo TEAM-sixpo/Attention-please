@@ -17,7 +17,7 @@ def name_path(instance, filename):
 class UserUpload(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # key 필드 customuser 모델로 변경
     video = models.FileField(upload_to=name_path)     # FileField 하면 모델에 저장ㄴㄴ 경로만 저장
-    
+    script = models.TextField(blank=True, null=True)    # 사용자 스크립트 입력
     
     def __str__(self):
         return f"{self.user.username}"
