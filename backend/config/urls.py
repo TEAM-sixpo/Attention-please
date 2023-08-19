@@ -24,11 +24,12 @@ from django.conf.urls.static import static
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+
 # api 문서화 페이지 설정
 schema_view = get_schema_view(
-    openapi.Info(       # api 문서 상단에 표시될 정보 설정
+    openapi.Info(  # api 문서 상단에 표시될 정보 설정
         title="Your API",
-        default_version='v1',
+        default_version="v1",
         description="Your API description",
         terms_of_service="https://www.yourapp.com/terms/",
         contact=openapi.Contact(email="contact@yourapp.com"),
