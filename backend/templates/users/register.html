@@ -3,11 +3,12 @@
     <div class="wrapper">
         <h1>Register</h1>
         <form method="post" action="{% url 'users:register'%}">
-            <input type="text" placeholder="ID" id="username" value="{{form.username.value|default_if_none:''}}">
-            <input type="password" placeholder="비밀번호" id="password" value="{{form.password.value|default_if_none:''}}">
-            <input type="text" placeholder="닉네임" id="nickname" value="{{form.nickname.value|default_if_none:''}}">
-            <input type="text" placeholder="이메일" id="email" value="{{form.email.value|default_if_none:''}}">
-            <button>회원가입</button>
+            {% csrf_token%}
+            <input type="text" placeholder="아이디" name="username" >
+            <input type="password" placeholder="비밀번호" name="password" >
+            <input type="text" placeholder="닉네임" name="nickname" >
+            <input type="text" placeholder="이메일" name="email" >
+            <input type="submit">회원가입</input>
         </form>
     <div class="member">
         이미 회원이신가요? <a href="{% url 'users:login'%}">
@@ -15,5 +16,4 @@
         </a>
     </div>
     </div>
-</body>
-</html>
+{% endblock %}
