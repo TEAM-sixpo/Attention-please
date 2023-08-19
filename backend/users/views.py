@@ -1,6 +1,7 @@
-from . models import CustomUser
+from .models import CustomUser
 from rest_framework import generics, status
 from rest_framework.response import Response
+
 # Create your views here.
 
 from rest_framework.authtoken.models import Token
@@ -16,27 +17,26 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'users/register.html')  # 회원가입 페이지를 보여줌
+        return render(request, "users/register.html")  # 회원가입 페이지를 보여줌
 
     def post(self, request, *args, **kwargs):
         return super().post(request, *args, **kwargs)
 
-    
+
 class LoginView(generics.GenericAPIView):
     serializer_class = AuthTokenSerializer
-    
+
     def post(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        
-        user = serializer.validated_data['user']
-        
+
+        user = serializer.validated_data["user"]
+
         token, created = Token.objects.get_or_create(user=user)
         return Response({"token": token.key}, status=status.HTTP_200_OK)
-    
 
 
-@api_view(['POST'])
+@api_view(["POST"])
 def logout_view(request):
     if request.auth:
         request.auth.delete()
